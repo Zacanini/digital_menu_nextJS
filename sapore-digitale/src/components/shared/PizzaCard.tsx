@@ -12,14 +12,16 @@ import { Pizza } from '../../domain/entities';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardFooter } from '../ui/card';
 import { Badge } from '../ui/badge';
+import { useCartStore } from '@/store/cart-store';
 
 interface PizzaCardProps {
   pizza: Pizza;
-  onAddToCart?: (pizza: Pizza) => void;
   onPizzaClick?: (pizza: Pizza) => void;
 }
 
-export function PizzaCard({ pizza, onAddToCart, onPizzaClick }: PizzaCardProps) {
+export function PizzaCard({ pizza, onPizzaClick }: PizzaCardProps) {
+  const { addItem, openCart } = useCartStore();
+  
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -35,12 +37,10 @@ export function PizzaCard({ pizza, onAddToCart, onPizzaClick }: PizzaCardProps) 
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (onAddToCart) {
-      onAddToCart(pizza);
-    } else {
-      // Fallback para demonstração
-      alert(`${pizza.name} foi adicionada ao carrinho! 🍕`);
-    }
+    // Adiciona a pizza ao carrinho (tamanho médio, massa tradicional por padrão)
+    addItem(pizza);
+    // Abre o carrinho para mostrar que foi adicionado
+    openCart();
   };
 
   return (

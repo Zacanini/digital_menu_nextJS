@@ -5,11 +5,17 @@
  * e ícone do carrinho. Design elegante seguindo o design system italiano.
  */
 
+'use client';
+
 import Link from 'next/link';
 import { ShoppingCart, MapPin, Phone } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useCartStore } from '@/store/cart-store';
 
 export function Header() {
+  const { getTotalItems, openCart } = useCartStore();
+  const totalItems = getTotalItems();
+
   return (
     <header className="bg-background border-b border-secondary/50 sticky top-0 z-50 backdrop-blur-sm">
       {/* Top Bar - Informações de contato */}
@@ -102,12 +108,15 @@ export function Header() {
               size="icon"
               className="relative hover:bg-primary hover:text-primary-foreground transition-colors"
               aria-label="Carrinho de compras"
+              onClick={openCart}
             >
               <ShoppingCart className="h-5 w-5" />
-              {/* Cart Counter - será conectado com Zustand depois */}
-              <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
-                0
-              </span>
+              {/* Cart Counter */}
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
+                  {totalItems > 99 ? '99+' : totalItems}
+                </span>
+              )}
             </Button>
           </div>
         </div>
