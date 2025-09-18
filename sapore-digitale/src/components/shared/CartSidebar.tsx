@@ -19,6 +19,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function CartSidebar() {
   const {
@@ -101,7 +102,12 @@ export function CartSidebar() {
           {/* Lista de Itens */}
           <div className="flex-1 overflow-auto space-y-4">
             {items.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-64 text-center">
+              <motion.div 
+                className="flex flex-col items-center justify-center h-64 text-center"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
                 <ShoppingBag className="w-16 h-16 text-muted-foreground mb-4" />
                 <h3 className="font-semibold text-lg text-muted-foreground mb-2">
                   Carrinho vazio
@@ -109,13 +115,23 @@ export function CartSidebar() {
                 <p className="text-muted-foreground text-sm">
                   Adicione algumas pizzas deliciosas ao seu carrinho!
                 </p>
-              </div>
+              </motion.div>
             ) : (
-              items.map((item, index) => (
-                <div
-                  key={`${item.pizza.id}-${item.size}-${item.dough}-${index}`}
-                  className="border rounded-lg p-4 bg-card"
-                >
+              <AnimatePresence mode="popLayout">
+                {items.map((item, index) => (
+                  <motion.div
+                    key={`${item.pizza.id}-${item.size}-${item.dough}-${index}`}
+                    className="border rounded-lg p-4 bg-card"
+                    layout
+                    initial={{ opacity: 0, x: -20, scale: 0.9 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: 20, scale: 0.9 }}
+                    transition={{ 
+                      duration: 0.2,
+                      layout: { duration: 0.3 }
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                  >
                   <div className="flex gap-3">
                     {/* Imagem */}
                     <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-secondary/20 flex-shrink-0">
@@ -196,8 +212,9 @@ export function CartSidebar() {
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
+                </motion.div>
+              ))}
+              </AnimatePresence>
             )}
           </div>
 

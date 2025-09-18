@@ -8,6 +8,7 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Pizza } from '../../domain/entities';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardFooter } from '../ui/card';
@@ -44,10 +45,21 @@ export function PizzaCard({ pizza, onPizzaClick }: PizzaCardProps) {
   };
 
   return (
-    <Card 
-      className="group cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-card border-secondary/50"
-      onClick={handleCardClick}
+    <motion.div
+      whileHover={{ 
+        scale: 1.02,
+        y: -8,
+        transition: { duration: 0.2, ease: "easeOut" }
+      }}
+      whileTap={{ scale: 0.98 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
+      <Card 
+        className="group cursor-pointer transition-all duration-300 hover:shadow-xl bg-card border-secondary/50 h-full flex flex-col"
+        onClick={handleCardClick}
+      >
       {/* Imagem da Pizza */}
       <div className="relative overflow-hidden rounded-t-lg">
         <div className="aspect-square relative bg-secondary/20">
@@ -164,5 +176,6 @@ export function PizzaCard({ pizza, onPizzaClick }: PizzaCardProps) {
         </Button>
       </CardFooter>
     </Card>
+    </motion.div>
   );
 }
