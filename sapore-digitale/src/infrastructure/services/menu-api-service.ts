@@ -27,8 +27,15 @@ export interface IMenuAPIService {
 export class MenuAPIService implements IMenuAPIService {
   /**
    * Simula delay de rede para tornar a experiência mais realista
+   * Durante o build, usa delay mínimo para evitar timeouts
    */
-  private async simulateNetworkDelay(min: number = 300, max: number = 800): Promise<void> {
+  private async simulateNetworkDelay(min: number = 50, max: number = 100): Promise<void> {
+    // Durante o build (processo estático), usar delay mínimo
+    const isBuild = process.env.NODE_ENV === 'production' || process.env.NEXT_PHASE === 'phase-production-build';
+    if (isBuild) {
+      return Promise.resolve();
+    }
+    
     const delay = Math.random() * (max - min) + min;
     return new Promise(resolve => setTimeout(resolve, delay));
   }
@@ -40,11 +47,6 @@ export class MenuAPIService implements IMenuAPIService {
   async getMenuItems(): Promise<{ pizzas: Pizza[]; categories: Category[] }> {
     await this.simulateNetworkDelay();
     
-    // Simula possível erro de rede ocasional (5% de chance)
-    if (Math.random() < 0.05) {
-      throw new Error('Erro de conexão com o servidor. Tente novamente.');
-    }
-
     // Retorna apenas pizzas disponíveis
     const availablePizzas = mockPizzas.filter(pizza => pizza.isAvailable);
     const activeCategories = mockCategories.filter(category => category.isActive);
