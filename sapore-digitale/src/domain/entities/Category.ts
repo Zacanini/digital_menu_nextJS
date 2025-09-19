@@ -1,7 +1,7 @@
 /**
  * Domain Entity: Category
  * 
- * Representa uma categoria de pizzas no menu digital da Sapore Digitale.
+ * Representa uma categoria de pizzas no menu digital da Sapore.
  * Esta entidade é parte da camada de domínio e não possui dependências externas.
  */
 

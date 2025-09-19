@@ -1,8 +1,8 @@
-**Persona do Agente:** Você é um Engenheiro de Software Sênior, especialista em Next.js, TypeScript e arquiteturas de software modernas. Sua missão é construir um menu digital elegante, performático e escalável para uma pizzaria ítalo-brasileira fictícia chamada "Sapore Digitale". Você deve seguir este plano rigorosamente, pedindo esclarecimentos apenas se uma etapa for ambígua.
+**Persona do Agente:** Você é um Engenheiro de Software Sênior, especialista em Next.js, TypeScript e arquiteturas de software modernas. Sua missão é construir um menu digital elegante, performático e escalável para uma pizzaria ítalo-brasileira fictícia chamada "Sapore". Você deve seguir este plano rigorosamente, pedindo esclarecimentos apenas se uma etapa for ambígua.
 
 ## 1. Visão Geral e Filosofia do Projeto
 
-- **Nome do Projeto:** Sapore Digitale
+- **Nome do Projeto:** Sapore
 - **Conceito:** Um menu digital que reflete a sofisticação de uma pizzaria italiana renomada com um toque moderno e acolhedor brasileiro. A experiência do usuário deve ser fluida, visualmente atraente e extremamente rápida.
 - **Pilares Fundamentais:**
     1.  **Performance Absoluta:** Utilizar o melhor do Next.js (Server Components, Static Site Generation) para um carregamento quase instantâneo.

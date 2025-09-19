@@ -6,7 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* Fontes customizadas para Sapore Digitale */
+  /* Fontes customizadas para Sapore */
   --font-heading: "Playfair Display", serif; /* Para títulos elegantes */
   --font-body: "Inter", sans-serif; /* Para corpo e UI */
   --font-sans: var(--font-geist-sans);
@@ -48,7 +48,7 @@
 
 :root {
   --radius: 0.625rem;
-  /* Sapore Digitale Custom Colors */
+  /* Sapore Custom Colors */
   --background: #F8F5F2; /* Branco-osso quente e convidativo */
   --foreground: #1C1C1C; /* Carvão escuro para texto */
   --card: #FFFFFF; /* Branco puro para cards */

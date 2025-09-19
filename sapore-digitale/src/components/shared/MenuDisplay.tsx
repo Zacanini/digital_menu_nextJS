@@ -1,5 +1,5 @@
 /**
- * MenuDisplay Component - Sapore Digitale
+ * MenuDisplay Component - Sapore
  * 
  * Client Component que gerencia o estado do modal de detalhes
  * e renderiza o menu completo da pizzaria.
@@ -80,8 +80,8 @@ export function MenuDisplay({ menuData }: MenuDisplayProps) {
           variants={heroVariants}
         >
           <h1 className="font-heading text-4xl md:text-6xl font-bold text-foreground mb-4">
-            Benvenuti alla
-            <span className="block text-primary">Sapore Digitale</span>
+            Bem Vindo a
+            <span className="block text-primary">Sapore</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
             Experimente o autêntico sabor da Itália no coração de São Paulo.

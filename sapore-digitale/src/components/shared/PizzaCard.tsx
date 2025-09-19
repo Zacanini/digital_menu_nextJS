@@ -1,5 +1,5 @@
 /**
- * PizzaCard Component - Sapore Digitale
+ * PizzaCard Component - Sapore
  * 
  * Card elegante para exibição de pizzas no menu digital.
  * Design premium seguindo a identidade visual italiana.

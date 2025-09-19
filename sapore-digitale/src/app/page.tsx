@@ -1,5 +1,5 @@
 /**
- * Home Page - Sapore Digitale
+ * Home Page - Sapore
  * 
  * Página principal do menu digital da pizzaria.
  * Server Component que busca dados usando Clean Architecture.

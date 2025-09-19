@@ -1,5 +1,5 @@
 /**
- * Header Component - Sapore Digitale
+ * Header Component - Sapore
  * 
  * Cabeçalho principal da aplicação com logo, navegação de categorias
  * e ícone do carrinho. Design elegante seguindo o design system italiano.
@@ -52,7 +52,7 @@ export function Header() {
             </div>
             <div className="hidden sm:block">
               <h1 className="font-heading text-2xl lg:text-3xl font-bold text-foreground">
-                Sapore Digitale
+                Sapore
               </h1>
               <p className="text-sm text-muted-foreground italic">
                 Autêntica Pizzaria Italiana

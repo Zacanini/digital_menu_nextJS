@@ -1,5 +1,5 @@
 /**
- * PizzaDetailModal Component - Sapore Digitale
+ * PizzaDetailModal Component - Sapore
  * 
  * Modal elegante que exibe detalhes completos de uma pizza com opções
  * de customização (tamanho, massa) e funcionalidade de adicionar ao carrinho.

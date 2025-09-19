@@ -1,5 +1,5 @@
 /**
- * CartSidebar Component - Sapore Digitale
+ * CartSidebar Component - Sapore
  * 
  * Sidebar elegante que exibe os itens do carrinho usando Sheet do Shadcn.
  * Inclui funcionalidades de adicionar/remover itens e exibir total.

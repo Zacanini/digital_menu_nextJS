@@ -1,5 +1,5 @@
 /**
- * Footer Component - Sapore Digitale
+ * Footer Component - Sapore
  * 
  * Rodapé da aplicação com informações de contato, endereço,
  * redes sociais e links úteis. Design premium italiano.
@@ -22,7 +22,7 @@ export function Footer() {
               </div>
               <div>
                 <h3 className="font-heading text-xl font-bold text-foreground">
-                  Sapore Digitale
+                  Sapore
                 </h3>
                 <p className="text-sm text-muted-foreground italic">
                   Autêntica Pizzaria Italiana
@@ -132,7 +132,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-center md:text-left">
               <p className="text-sm text-muted-foreground">
-                © 2024 Sapore Digitale. Todos os direitos reservados.
+                © 2024 Sapore. Todos os direitos reservados.
               </p>
               <p className="text-xs text-muted-foreground mt-1">
                 Uma tradição italiana no coração de São Paulo desde 1947

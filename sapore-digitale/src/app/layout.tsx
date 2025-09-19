@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Fontes customizadas para Sapore Digitale
+// Fontes customizadas para Sapore
 const playfairDisplay = Playfair_Display({
   variable: "--font-heading",
   subsets: ["latin"],
@@ -30,7 +30,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sapore Digitale - Menu Digital",
+  title: "Sapore - Menu Digital",
   description: "Menu digital elegante para uma experiência gastronômica italiana premium",
 };
 
