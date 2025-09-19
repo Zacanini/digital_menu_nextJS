@@ -92,7 +92,7 @@ export const mockPizzas: Pizza[] = [
     imageUrl: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     categoryId: 'cat-001',
     isAvailable: true,
-    isFeatured: true,
+    isFeatured: false,
     preparationTime: 18,
     nutritionalInfo: {
       caloriesPerSlice: 350,
@@ -222,7 +222,7 @@ export const mockPizzas: Pizza[] = [
     imageUrl: 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     categoryId: 'cat-003',
     isAvailable: true,
-    isFeatured: true,
+    isFeatured: false,
     preparationTime: 20,
     nutritionalInfo: {
       caloriesPerSlice: 240,
@@ -256,7 +256,7 @@ export const mockPizzas: Pizza[] = [
     slug: 'vegana-tropical'
   },
 
-  // === ESPECIALIDADES DA CASA ===
+
   {
     id: 'pizza-010',
     name: 'Tartufo Nero',
@@ -266,7 +266,7 @@ export const mockPizzas: Pizza[] = [
     imageUrl: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     categoryId: 'cat-004',
     isAvailable: true,
-    isFeatured: true,
+    isFeatured: false,
     preparationTime: 25,
     nutritionalInfo: {
       caloriesPerSlice: 420,
@@ -287,7 +287,7 @@ export const mockPizzas: Pizza[] = [
   imageUrl: '/image_pizzas/pizza-de-salmao-defumado.jpg',
   categoryId: 'cat-004',
     isAvailable: true,
-    isFeatured: true,
+    isFeatured: false,
     preparationTime: 20,
     nutritionalInfo: {
       caloriesPerSlice: 360,
@@ -308,7 +308,7 @@ export const mockPizzas: Pizza[] = [
     imageUrl: 'https://images.unsplash.com/photo-1506280754576-f6fa8a873550?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     categoryId: 'cat-004',
     isAvailable: true,
-    isFeatured: true,
+    isFeatured: false,
     preparationTime: 22,
     nutritionalInfo: {
       caloriesPerSlice: 320,

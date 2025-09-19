@@ -60,48 +60,8 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Navigation - Categories */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link 
-              href="#salgadas"
-              className="text-foreground hover:text-primary transition-colors font-medium"
-            >
-              Salgadas
-            </Link>
-            <Link 
-              href="#doces"
-              className="text-foreground hover:text-primary transition-colors font-medium"
-            >
-              Doces
-            </Link>
-            <Link 
-              href="#veganas"
-              className="text-foreground hover:text-primary transition-colors font-medium"
-            >
-              Veganas
-            </Link>
-            <Link 
-              href="#especiais"
-              className="text-foreground hover:text-primary transition-colors font-medium"
-            >
-              Especialidades
-            </Link>
-          </nav>
-
           {/* Cart Button */}
           <div className="flex items-center gap-4">
-            {/* Mobile Menu Button - será implementado depois */}
-            <Button
-              variant="outline"
-              size="icon"
-              className="lg:hidden"
-              aria-label="Menu"
-            >
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </Button>
-
             {/* Cart Button */}
             <Button
               variant="outline"
@@ -120,38 +80,6 @@ export function Header() {
             </Button>
           </div>
         </div>
-      </div>
-
-      {/* Mobile Navigation - será expandido depois */}
-      <div className="lg:hidden border-t border-secondary/30">
-        <nav className="container mx-auto px-4 py-3">
-          <div className="flex justify-center space-x-6 text-sm">
-            <Link 
-              href="#salgadas"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Salgadas
-            </Link>
-            <Link 
-              href="#doces"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Doces
-            </Link>
-            <Link 
-              href="#veganas"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Veganas
-            </Link>
-            <Link 
-              href="#especiais"
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Especiais
-            </Link>
-          </div>
-        </nav>
       </div>
     </header>
   );
