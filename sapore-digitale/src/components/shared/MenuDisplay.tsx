@@ -14,6 +14,7 @@ import { GetMenuItemsResult } from '@/application/use-cases/get-menu-items';
 import { PizzaCard } from './PizzaCard';
 import { PizzaDetailModal } from './PizzaDetailModal';
 import { CategoryTabs } from './CategoryTabs';
+import { INGREDIENTS_DISPLAY_COUNT } from '@/config/ui';
 
 interface MenuDisplayProps {
   menuData: GetMenuItemsResult;
@@ -141,8 +142,8 @@ export function MenuDisplay({ menuData }: MenuDisplayProps) {
             
             {/* Grid Especialidades */}
             <div className="max-w-7xl mx-auto">
-              {/* Layout responsivo especial: 1 coluna em mobile, 2 colunas em tablet, 3 em desktop */}
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+              {/* Layout responsivo especial: 3 quadrados bem distribuídos no mobile */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 lg:gap-10">
                 {menuData.featuredPizzas.map((pizza, index) => (
                   <motion.div
                     key={pizza.id}
@@ -152,83 +153,80 @@ export function MenuDisplay({ menuData }: MenuDisplayProps) {
                     transition={{ delay: index * 0.2, duration: 0.6 }}
                     whileHover={{ y: -8 }}
                   >
-                    {/* Card com Elevação Premium */}
-                    <div className="relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800">
-                      {/* Badge de Especialidade */}
-                      <div className="absolute top-4 left-4 z-10">
-                        <span className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg">
+                    {/* Card Redesenhado para Mobile - Formato Retangular com altura fixa */}
+                    <div className="relative bg-white dark:bg-gray-900 rounded-lg sm:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 sm:duration-500 border border-gray-200 dark:border-gray-800 h-full flex flex-col" style={{ minHeight: '320px' }}>
+                      
+                      {/* Badges - Compactos no Mobile */}
+                      <div className="absolute top-2 left-2 z-10">
+                        <span className="inline-flex items-center px-2 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg">
                           <span className="mr-1">⭐</span>
-                          ESPECIALIDADE
+                          <span className="hidden sm:inline">ESPECIALIDADE</span>
+                          <span className="sm:hidden">#{index + 1}</span>
                         </span>
                       </div>
 
-                      {/* Número da Especialidade */}
-                      <div className="absolute top-4 right-4 z-10">
-                        <div className="w-8 h-8 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                          <span className="text-white font-bold text-sm">{index + 1}</span>
-                        </div>
-                      </div>
-
-                      {/* Imagem com Overlay Gradiente */}
-                      <div className="relative h-64 sm:h-72 overflow-hidden">
+                      {/* Imagem Quadrada no Topo */}
+                      <div className="relative aspect-square overflow-hidden bg-gray-100">
                         <img
                           src={pizza.imageUrl}
                           alt={pizza.name}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        {/* Overlay sutil */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                        
+                        {/* Preço - Posicionado sobre a imagem */}
+                        <div className="absolute bottom-2 right-2">
+                          <div className="bg-white/90 backdrop-blur-sm text-gray-900 px-2 py-1 rounded-full font-bold text-sm sm:text-base shadow-lg">
+                            R$ {pizza.price.toFixed(2).replace('.', ',')}
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Conteúdo */}
-                      <div className="p-6 sm:p-8">
-                        <h3 className="font-heading text-xl sm:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                          {pizza.name}
-                        </h3>
-                        
-                        <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-6 h-16 sm:h-20 overflow-hidden">
-                          {pizza.description}
-                        </p>
+                      {/* Conteúdo Compacto com altura controlada */}
+                      <div className="p-2 sm:p-4 flex-1 flex flex-col" style={{ minHeight: '140px' }}>
+                        {/* Área de Conteúdo que expande */}
+                        <div className="flex-1">
+                          {/* Nome - Sempre visível */}
+                          <h3 className="font-heading text-sm sm:text-xl font-bold text-foreground mb-1 sm:mb-2 truncate sm:line-clamp-2 leading-tight">
+                            {pizza.name}
+                          </h3>
+                          
+                          {/* Descrição - Resumida no mobile */}
+                          <p className="text-muted-foreground text-xs sm:text-base leading-tight mb-2 sm:mb-4 line-clamp-2">
+                            {pizza.description}
+                          </p>
 
-                        {/* Ingredientes Premium */}
-                        <div className="mb-6">
-                          <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                            Ingredientes Selecionados
-                          </h4>
-                          <div className="flex flex-wrap gap-1">
-                            {pizza.ingredients.slice(0, 3).map((ingredient, idx) => (
-                              <span
-                                key={idx}
-                                className="inline-block px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs rounded-full text-muted-foreground"
-                              >
-                                {ingredient}
-                              </span>
-                            ))}
-                            {pizza.ingredients.length > 3 && (
-                              <span className="inline-block px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs rounded-full text-muted-foreground">
-                                +{pizza.ingredients.length - 3}
-                              </span>
-                            )}
+                          {/* Ingredientes - Só no desktop */}
+                          <div className="hidden sm:block mb-4">
+                            <div className="flex flex-wrap gap-1">
+                              {pizza.ingredients.slice(0, INGREDIENTS_DISPLAY_COUNT).map((ingredient, idx) => (
+                                <span
+                                  key={idx}
+                                  className="inline-block px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs rounded-full text-muted-foreground"
+                                >
+                                  {ingredient}
+                                </span>
+                              ))}
+                              {pizza.ingredients.length > INGREDIENTS_DISPLAY_COUNT && (
+                                <span className="inline-block px-2 py-1 bg-gray-100 dark:bg-gray-800 text-xs rounded-full text-muted-foreground">
+                                  +{pizza.ingredients.length - INGREDIENTS_DISPLAY_COUNT}
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </div>
 
-                        {/* Footer do Card */}
-                        <div className="flex items-center justify-between">
-                          <div>
-                            <span className="text-2xl sm:text-3xl font-bold text-primary">
-                              R$ {pizza.price.toFixed(2).replace('.', ',')}
-                            </span>
-                            <span className="block text-xs text-muted-foreground">
-                              {pizza.preparationTime} min
-                            </span>
-                          </div>
-                          
+                        {/* Botão de Ação - SEMPRE no final */}
+                        <div className="mt-auto pt-2">
                           <motion.button
                             onClick={() => handlePizzaClick(pizza)}
-                            className="bg-gradient-to-r from-primary to-orange-500 text-white px-6 py-3 rounded-full font-semibold text-sm hover:shadow-lg transition-all duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            className="w-full bg-gradient-to-r from-primary to-orange-500 text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg sm:rounded-full font-semibold text-xs sm:text-sm hover:shadow-lg transition-all duration-300 h-8 sm:h-10"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
                           >
-                            Ver Detalhes
+                            <span className="sm:hidden">Ver</span>
+                            <span className="hidden sm:inline">Ver Detalhes</span>
                           </motion.button>
                         </div>
                       </div>
@@ -286,8 +284,8 @@ export function MenuDisplay({ menuData }: MenuDisplayProps) {
             </p>
           </div>
 
-          {/* Grid de Pizzas Filtradas */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          {/* Grid de Pizzas Filtradas - 3 quadrados no mobile */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 xl:grid-cols-4">
             {filteredPizzas.map((pizza) => (
               <motion.div
                 key={pizza.id}
